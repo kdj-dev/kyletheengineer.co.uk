@@ -1,17 +1,17 @@
 steps:
 # Pull the existing image
- - name: 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest'
+ - name: 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer'
    entrypoint: 'bash'
    args:
     - '-c'
     - |
-      docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest || exit 0
+      docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer || exit 0
 # Build a docker image
  - name: 'gcr.io/cloud-builders/docker'
-   args: [ 'build', '-t', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest', '--cache-from', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest', '.' ]
+   args: [ 'build', '-t', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer', '--cache-from', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer', '.' ]
 # Push the docker image to container registry
  - name: 'gcr.io/cloud-builders/docker'
-   args: ["push", "docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest"]
+   args: ["push", "docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer"]
 # Deploy an image from Container Registry to Cloud Run
  - name: 'gcr.io/cloud-builders/gcloud'
    args: ['beta', 'run', 'deploy', 'tomcat', '--image', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:latest:latest', '--region', 'europe-west1', '--platform', 'managed', '--allow-unauthenticated']
