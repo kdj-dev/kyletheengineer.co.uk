@@ -1,4 +1,0 @@
-steps:
-# Build a docker image
- - name: 'gcr.io/cloud-builders/docker'
-   args: [ 'build', '-t', 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer', '.' ]
