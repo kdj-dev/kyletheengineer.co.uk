@@ -1,0 +1,13 @@
+steps:
+#First Clone from Github  
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone','https://github.com/kdj-dev/kyletheengineer.co.uk.git']
+
+#Build the image 
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build','-t','gcr.io/${_PROJECT}/kyletheengineer.co.uk:${_VERSION}','.']
+
+#Push the image  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push','gcr.io/${_PROJECT}/kyletheengineer.co.uk:${_VERSION}']
+  
