@@ -5,9 +5,11 @@ steps:
 
 #Build the image 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/${_PROJECT}/kyletheengineer.co.uk:${_VERSION}','.']
+  args: ['build','-t','gcr.io/${_PROJECT}/kyletheengineer.co.uk:tag1','.']
+images:
+- 'docker pull eu.gcr.io/ops-arsalan-ahmad/kyletheengineer:tag1
 
 #Push the image  
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/${_PROJECT}/kyletheengineer.co.uk:${_VERSION}']
+  args: ['push','gcr.io/${_PROJECT}/kyletheengineer.co.uk:tag1']
   
